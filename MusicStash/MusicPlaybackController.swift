@@ -53,6 +53,13 @@ class MusicPlaybackController: UIViewController, AVAudioPlayerDelegate, UITableV
         queueTable.dataSource = self
         queueTable.delegate = self
         
+       // queueTable.backgroundColor = UIColor.redColor()
+        
+        self.edgesForExtendedLayout = UIRectEdge.None;
+        queueTable.tableHeaderView = UIView(frame: CGRectZero)
+       // queueTable.contentInset = UIEdgeInsets(top: -20, left: 0, bottom: 0, right: 0)
+//        queueTable.tableHeaderView.backgroundColor = UIColor.blueColor()
+        
         self.currentFileMetaData[MPNowPlayingInfoPropertyElapsedPlaybackTime] = 0.0
         
         updateTimer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("updateTime"), userInfo: nil, repeats: true)
@@ -404,7 +411,14 @@ class MusicPlaybackController: UIViewController, AVAudioPlayerDelegate, UITableV
         
     }    
     
-    
+    func tableView(tableView: UITableView!, viewForFooterInSection section: Int) -> UIView! {
+        return UIView(frame: CGRectZero)
+    }
+
+    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView! {
+        return UIView(frame: CGRectZero)
+    }
+
     
     /*
     // MARK: - Navigation

@@ -79,6 +79,23 @@ class MusicSearchController: UITableViewController, UISearchDisplayDelegate, UIS
         
         req.executeWithResultBlock({ (response:VKResponse!) -> Void in
             
+            let app = UIApplication.sharedApplication().delegate as AppDelegate
+            let context:NSManagedObjectContext = app.managedObjectContext
+            
+            let request = NSFetchRequest(entityName: "Songs")
+            request.returnsObjectsAsFaults = false
+            //        request.predicate = NSPredicate(format: "title = %@", "Women")
+            request.sortDescriptors = [
+                NSSortDescriptor(key: "date_added", ascending: false)
+            ]
+            
+            let results:Array<NSManagedObject> = context.executeFetchRequest(request, error: nil) as Array<NSManagedObject>
+            
+            self.stashedMusic = results.map({
+                (item:NSManagedObject) -> Int in
+                return item.valueForKey("id") as Int
+            })
+            
             let res = response.json as NSDictionary
             self.musicList = res["items"] as Array<AnyObject>
             self.tableView.reloadData()
