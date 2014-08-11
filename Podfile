@@ -3,7 +3,6 @@
 
 target "MusicStash" do
   pod "VK-ios-sdk" 
-  pod "AFNetworking", "~> 2.0"
 end
 
 target "MusicStashTests" do
