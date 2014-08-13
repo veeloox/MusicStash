@@ -10,7 +10,7 @@
         <!--Login-->
         <scene sceneID="NND-hF-baE">
             <objects>
-                <tabBarController title="Login" id="o6M-Iy-nzj" customClass="LoginController" customModule="MusicStash" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController title="Login" automaticallyAdjustsScrollViewInsets="NO" id="o6M-Iy-nzj" customClass="LoginController" customModule="MusicStash" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="qEb-lQ-Tvq"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="OgD-aM-FFY">

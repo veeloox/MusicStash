@@ -265,10 +265,25 @@ class MusicPlaybackController: UIViewController, AVAudioPlayerDelegate, UITableV
     }
     
     @IBAction func prevButtonPressed(sender: UIButton!){
-        self.nowPlaying = 0
-        self.setButtonState("play")
-        doPrevTrack(force:true)
-        playCurrent()
+        
+        if (sender != nil){
+            self.nowPlaying = 0
+            self.setButtonState("play")
+            doPrevTrack(force:true)
+            playCurrent()
+        } else {
+            if ((app.player) != nil){
+                if (app.player.currentTime < 3.0){
+                    self.nowPlaying = 0
+                    self.setButtonState("play")
+                    doPrevTrack(force:true)
+                    playCurrent()
+                } else {
+                    app.player.currentTime = 0.0
+                }
+            }
+        }
+        
     }
     
     @IBAction func shuffleButtonPressed(sender: UIButton!){
